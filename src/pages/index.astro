@@ -1,5 +1,18 @@
 ---
+import Card from "../components/card.astro";
+import Background from "../components/gradient-bg.astro";
+import ThemeSwicher from "../components/theme-switcher.astro";
+
+const year = new Date().getFullYear();
+
+const projects = await Astro.glob("../content/index/*.md");
 ---
+
+<style>
+	html {
+		scroll-behavior: smooth;
+	}
+</style>
 
 <html lang="en">
 	<head>
@@ -8,8 +21,161 @@
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro</title>
+		<style>
+			*,
+			body {
+				box-sizing: border-box;
+			}
+		</style>
 	</head>
-	<body>
-		<h1>Astro</h1>
+	<body
+		class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white scroll-smooth"
+	>
+		<div class="flex w-screen">
+			<aside class="w-96 p-8 relative">
+				<div class="sticky top-32">
+					<div
+						class="flex flex-col gap-4 bg-gray-50 dark:bg-slate-800 p-8 items-center rounded-lg w-full"
+					>
+						<a href="#header">Inicio</a>
+						<a href="">About</a>
+						<a href="">About</a>
+						<a href="">About</a>
+					</div>
+
+					<ThemeSwicher />
+				</div>
+			</aside>
+			<main class="pt-8 w-full scroll-smooth p-12">
+				<section id="hero" class="py-12 flex container mx-auto">
+					<div class="w-10/12 py-12" id="header">
+						<hgroup>
+							<h2
+								class="text-2xl text-gray-700 dark:text-slate-200"
+							>
+								Hola, ¡Bienvenido a Hamaka!
+							</h2>
+							<h1 class="text-6xl font-black mb-4">
+								Conviértete en un experto en desarrollo web
+							</h1>
+						</hgroup>
+						<p class="text-xl">
+							¡No te quedes atrás! Aprovecha esta oportunidad
+							única de convertirte en un experto en desarrollo web
+							de forma gratuita con nuestros proyectos. Te
+							llevaremos desde cero hasta la producción, paso a
+							paso, y te brindaremos todo lo que necesitas para
+							tener éxito en esta emocionante industria.
+						</p>
+					</div>
+					<div class="my-4 relative flex-1"></div>
+				</section>
+
+				<section class="z-10" id="projects">
+					<div class="container mx-auto py-8 z-10">
+						<h2 class="text-3xl font-black mb-8">Proyectos</h2>
+						<div class="grid grid-cols-2 gap-8">
+							{
+								projects
+									.slice(0, 3)
+									.map((post) => <Card post={post} />)
+							}
+						</div>
+					</div>
+				</section>
+
+				<section class="z-10" id="projects">
+					<div class="container mx-auto py-8 z-10">
+						<h2 class="text-3xl font-black mb-8">Proyectos</h2>
+						<div class="grid grid-cols-2 gap-8">
+							{
+								projects
+									.slice(0, 3)
+									.map((post) => <Card post={post} />)
+							}
+						</div>
+					</div>
+				</section>
+
+				<section id="about" class="h-64">
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Maiores culpa eaque ex corporis praesentium quis
+						quibusdam repudiandae, soluta laudantium id voluptas,
+						nam similique laboriosam explicabo inventore blanditiis
+						saepe voluptatibus pariatur.
+					</p>
+				</section>
+				<section id="about" class="h-64">
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Maiores culpa eaque ex corporis praesentium quis
+						quibusdam repudiandae, soluta laudantium id voluptas,
+						nam similique laboriosam explicabo inventore blanditiis
+						saepe voluptatibus pariatur.
+					</p>
+				</section>
+
+				<section id="about" class="h-64">
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Maiores culpa eaque ex corporis praesentium quis
+						quibusdam repudiandae, soluta laudantium id voluptas,
+						nam similique laboriosam explicabo inventore blanditiis
+						saepe voluptatibus pariatur.
+					</p>
+				</section>
+
+				<section id="about" class="h-64">
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Maiores culpa eaque ex corporis praesentium quis
+						quibusdam repudiandae, soluta laudantium id voluptas,
+						nam similique laboriosam explicabo inventore blanditiis
+						saepe voluptatibus pariatur.
+					</p>
+				</section>
+
+				<section id="about" class="h-64">
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Maiores culpa eaque ex corporis praesentium quis
+						quibusdam repudiandae, soluta laudantium id voluptas,
+						nam similique laboriosam explicabo inventore blanditiis
+						saepe voluptatibus pariatur.
+					</p>
+				</section>
+				<section id="about" class="h-64">
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Maiores culpa eaque ex corporis praesentium quis
+						quibusdam repudiandae, soluta laudantium id voluptas,
+						nam similique laboriosam explicabo inventore blanditiis
+						saepe voluptatibus pariatur.
+					</p>
+				</section>
+				<section id="about" class="h-64">
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Maiores culpa eaque ex corporis praesentium quis
+						quibusdam repudiandae, soluta laudantium id voluptas,
+						nam similique laboriosam explicabo inventore blanditiis
+						saepe voluptatibus pariatur.
+					</p>
+				</section>
+				<section id="about" class="h-64">
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit.
+						Maiores culpa eaque ex corporis praesentium quis
+						quibusdam repudiandae, soluta laudantium id voluptas,
+						nam similique laboriosam explicabo inventore blanditiis
+						saepe voluptatibus pariatur.
+					</p>
+				</section>
+				<footer class="w-full text-center">
+					© {year} Hamaka | Made with 🖤 by Adrian Manjarres in 🇨🇴
+				</footer>
+			</main>
+		</div>
 	</body>
 </html>
