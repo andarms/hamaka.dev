@@ -65,8 +65,23 @@ const links = ["Inicio", "Blog", "Contacto", "Acerca de"];
 	<body
 		class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white scroll-smooth relative"
 	>
-		<header>
-			<ThemeSwicher />
+		<header
+			class="sticky top-0 z-30 bg-white bg-opacity-50 backdrop-blur backdrop-filter dark:bg-gray-900 dark:bg-opacity-50"
+		>
+			<div
+				class="div flex justify-between mx-auto w-full max-w-7xl py-4 border-b border-gray-50 dark:border-gray-800"
+			>
+				<div class="flex items-center gap-4">
+					<img
+						src="/images/hamaka.svg"
+						alt=""
+						height="32"
+						width="32"
+					/>
+					<span class="font-black">Hamaka</span>
+				</div>
+				<ThemeSwicher />
+			</div>
 		</header>
 		<div
 			class="flex w-full max-w-7xl mx-auto gap-16 z-10 mt-12 rounded-lg relative"
@@ -98,7 +113,7 @@ const links = ["Inicio", "Blog", "Contacto", "Acerca de"];
 						</p>
 						<div class="py-8">
 							<button
-								class="bg-gradient-to-r from-orange-400 to-primary font-black text-white rounded-full text-xl px-4 py-2"
+								class="bg-primary hover:bg-primary/80 font-black text-white rounded-full text-xl px-4 py-2"
 								>Ver la lista de proyectos</button
 							>
 						</div>
@@ -115,7 +130,7 @@ const links = ["Inicio", "Blog", "Contacto", "Acerca de"];
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 						{
 							projects
-								.slice(0, 3)
+								.slice(0, 4)
 								.map((post) => <Card post={post} />)
 						}
 					</div>
