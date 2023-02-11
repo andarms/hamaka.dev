@@ -1,4 +1,7 @@
 ---
+import "@fontsource/quicksand";
+import "@fontsource/montserrat";
+
 import Card from "../components/card.astro";
 import Background from "../components/gradient-bg.astro";
 import ThemeSwicher from "../components/theme-switcher.astro";
@@ -6,57 +9,126 @@ import ThemeSwicher from "../components/theme-switcher.astro";
 const year = new Date().getFullYear();
 
 const projects = await Astro.glob("../content/index/*.md");
+
+const headline = "Aprende desarrollo web con nuestros proyectos".split(" ");
+
+const links = ["Inicio", "Contacto", "Acerca de"];
 ---
 
 <style>
+	@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
+
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities;
+
+	@layer base {
+		:root {
+			--color-primary: #ff3b30;
+			--color-secondary: #9dbb2f;
+		}
+	}
 	html {
 		scroll-behavior: smooth;
+	}
+
+	*,
+	body {
+		box-sizing: border-box;
+	}
+
+	.highlighted {
+		position: relative;
+		display: inline-block;
+	}
+
+	.highlighted::before {
+		content: "";
+		height: 40%;
+		width: calc(100%);
+		background-color: var(--color-primary);
+		position: absolute;
+		margin-left: -1rem;
+		top: 60%;
+		z-index: -1;
+		left: 0;
+		bottom: 0;
 	}
 </style>
 
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" type="image/svg+xml" href="/images/hamaka.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-		<style>
-			*,
-			body {
-				box-sizing: border-box;
-			}
-		</style>
+
+		<title>Hamaka</title>
 	</head>
 	<body
-		class="bg-white text-slate-900 dark:bg-slate-900 dark:text-white scroll-smooth"
+		class="bg-white text-gray-800 dark:bg-slate-900 dark:text-white scroll-smooth"
 	>
-		<div class="flex w-screen">
-			<aside class="w-96 p-8 relative">
+		<div class="flex w-full max-w-7xl mx-auto gap-16">
+			<aside class="w-96 relative hidden lg:block">
 				<div class="sticky top-32">
-					<div
-						class="flex flex-col gap-4 bg-gray-50 dark:bg-slate-800 p-8 items-center rounded-lg w-full"
-					>
-						<a href="#header">Inicio</a>
-						<a href="">About</a>
-						<a href="">About</a>
-						<a href="">About</a>
+					<div class="flex flex-col rounded-lg w-full mb-6 gap-2">
+						{
+							links.map((l) => (
+								<a
+									class="hover:text-white hover:bg-primary bg-gray-50 dark:bg-slate-800/20 font-black px-4 py-2 rounded-lg text-xl"
+									href="#top"
+								>
+									{l}
+								</a>
+							))
+						}
 					</div>
-
 					<ThemeSwicher />
+					<div class="my-4">
+						<div class="font-bold mb-3">Systema de inventarios</div>
+						<ol>
+							<li class="ml-8">Introducción</li>
+						</ol>
+					</div>
+					<button
+						class="text-left my-2 py-2 px-4 border bg-gray-50 dark:bg-slate-800 border-gray-100 dark:border-slate-700 rounded-lg hover:shadow-lg hover:-translate-y-2 transition-all"
+					>
+						<di class="text-sm text-gray-400">Prev</di>
+						<div class="text-gray-600">
+							Configuración del entono de trabajo
+						</div>
+					</button>
+					<button
+						class="text-left my-2 py-2 px-4 border bg-gray-50 dark:bg-slate-800 border-gray-100 dark:border-slate-700 rounded-lg hover:shadow-md hover:-translate-y-2 translate-all"
+					>
+						<di class="text-sm text-gray-400 dark:text-slate-400"
+							>next</di
+						>
+						<div class="text-gray-600 dark:text-slate-300">
+							Configuración del entono de trabajo
+						</div>
+					</button>
 				</div>
 			</aside>
-			<main class="pt-8 w-full scroll-smooth p-12">
-				<section id="hero" class="py-12 flex container mx-auto">
-					<div class="w-10/12 py-12" id="header">
+			<main class="w-full mx-auto p-8 lg:p-0">
+				<section id="hero" class="py-12 flex">
+					<div class="pt-12" id="header">
 						<hgroup>
 							<h2
 								class="text-2xl text-gray-700 dark:text-slate-200"
 							>
-								Hola, ¡Bienvenido a Hamaka!
+								<span>Hola</span>
+								<span class="animate-wiggle">👋🏽</span>,
+								<span>¡Bienvenido a Hamaka!</span>
 							</h2>
 							<h1 class="text-6xl font-black mb-4">
-								Conviértete en un experto en desarrollo web
+								{
+									headline.map((word) => (
+										<span class="highlighted font-bold">
+											{word} &ThinSpace;
+										</span>
+									))
+								}
 							</h1>
 						</hgroup>
 						<p class="text-xl">
@@ -71,22 +143,20 @@ const projects = await Astro.glob("../content/index/*.md");
 					<div class="my-4 relative flex-1"></div>
 				</section>
 
-				<section class="z-10" id="projects">
-					<div class="container mx-auto py-8 z-10">
-						<h2 class="text-3xl font-black mb-8">Proyectos</h2>
-						<div class="grid grid-cols-2 gap-8">
-							{
-								projects
-									.slice(0, 3)
-									.map((post) => <Card post={post} />)
-							}
-						</div>
+				<section class="py-4" id="projects">
+					<h2 class="text-3xl font-black mb-8">Proyectos</h2>
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+						{
+							projects
+								.slice(0, 3)
+								.map((post) => <Card post={post} />)
+						}
 					</div>
 				</section>
 
 				<section class="z-10" id="projects">
 					<div class="container mx-auto py-8 z-10">
-						<h2 class="text-3xl font-black mb-8">Proyectos</h2>
+						<h2 class="text-3xl font-bold mb-8">Proyectos</h2>
 						<div class="grid grid-cols-2 gap-8">
 							{
 								projects

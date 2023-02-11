@@ -11,6 +11,8 @@
 	},
 	"dependencies": {
 		"@astrojs/tailwind": "^3.0.1",
+		"@fontsource/montserrat": "^4.5.14",
+		"@fontsource/quicksand": "^4.5.12",
 		"astro": "^2.0.10",
 		"tailwindcss": "^3.2.6"
 	}
