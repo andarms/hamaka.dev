@@ -12,7 +12,7 @@ const projects = await Astro.glob("../content/index/*.md");
 
 const headline = "Aprende desarrollo web con nuestros proyectos".split(" ");
 
-const links = ["Inicio", "Contacto", "Acerca de"];
+const links = ["Inicio", "Blog", "Contacto", "Acerca de"];
 ---
 
 <style>
@@ -37,22 +37,19 @@ const links = ["Inicio", "Contacto", "Acerca de"];
 		box-sizing: border-box;
 	}
 
-	.highlighted {
-		position: relative;
-		display: inline-block;
+	.background-animate {
+		background-size: 400%;
+		animation: AnimationName 3s ease-in-out infinite;
 	}
 
-	.highlighted::before {
-		content: "";
-		height: 40%;
-		width: calc(100%);
-		background-color: var(--color-primary);
-		position: absolute;
-		margin-left: -1rem;
-		top: 60%;
-		z-index: -1;
-		left: 0;
-		bottom: 0;
+	@keyframes AnimationName {
+		0%,
+		100% {
+			background-position: 0% 50%;
+		}
+		50% {
+			background-position: 100% 50%;
+		}
 	}
 </style>
 
@@ -66,85 +63,55 @@ const links = ["Inicio", "Contacto", "Acerca de"];
 		<title>Hamaka</title>
 	</head>
 	<body
-		class="bg-white text-gray-800 dark:bg-slate-900 dark:text-white scroll-smooth"
+		class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white scroll-smooth relative"
 	>
-		<div class="flex w-full max-w-7xl mx-auto gap-16">
-			<aside class="w-96 relative hidden lg:block">
-				<div class="sticky top-32">
-					<div class="flex flex-col rounded-lg w-full mb-6 gap-2">
-						{
-							links.map((l) => (
-								<a
-									class="hover:text-white hover:bg-primary bg-gray-50 dark:bg-slate-800/20 font-black px-4 py-2 rounded-lg text-xl"
-									href="#top"
-								>
-									{l}
-								</a>
-							))
-						}
-					</div>
-					<ThemeSwicher />
-					<div class="my-4">
-						<div class="font-bold mb-3">Systema de inventarios</div>
-						<ol>
-							<li class="ml-8">Introducción</li>
-						</ol>
-					</div>
-					<button
-						class="text-left my-2 py-2 px-4 border bg-gray-50 dark:bg-slate-800 border-gray-100 dark:border-slate-700 rounded-lg hover:shadow-lg hover:-translate-y-2 transition-all"
-					>
-						<di class="text-sm text-gray-400">Prev</di>
-						<div class="text-gray-600">
-							Configuración del entono de trabajo
-						</div>
-					</button>
-					<button
-						class="text-left my-2 py-2 px-4 border bg-gray-50 dark:bg-slate-800 border-gray-100 dark:border-slate-700 rounded-lg hover:shadow-md hover:-translate-y-2 translate-all"
-					>
-						<di class="text-sm text-gray-400 dark:text-slate-400"
-							>next</di
-						>
-						<div class="text-gray-600 dark:text-slate-300">
-							Configuración del entono de trabajo
-						</div>
-					</button>
-				</div>
-			</aside>
-			<main class="w-full mx-auto p-8 lg:p-0">
-				<section id="hero" class="py-12 flex">
-					<div class="pt-12" id="header">
+		<header>
+			<ThemeSwicher />
+		</header>
+		<div
+			class="flex w-full max-w-7xl mx-auto gap-16 z-10 mt-12 rounded-lg relative"
+		>
+			<main class="w-full mx-auto px-8 lg:p-0">
+				<section id="hero" class="flex flex-col md:flex-row">
+					<div class="pt-24 md:py-24 flex-1" id="header">
 						<hgroup>
 							<h2
-								class="text-2xl text-gray-700 dark:text-slate-200"
+								class="text-2xl text-gray-700 dark:text-gray-200"
 							>
 								<span>Hola</span>
 								<span class="animate-wiggle">👋🏽</span>,
 								<span>¡Bienvenido a Hamaka!</span>
 							</h2>
-							<h1 class="text-6xl font-black mb-4">
-								{
-									headline.map((word) => (
-										<span class="highlighted font-bold">
-											{word} &ThinSpace;
-										</span>
-									))
-								}
+							<h1 class="text-4xl md:text-6xl font-black mb-4">
+								Aprende a desarrollar software con
+								<span
+									class="font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary background-animate"
+								>
+									proyectos reales
+								</span> desde cero hasta producción
 							</h1>
 						</hgroup>
 						<p class="text-xl">
-							¡No te quedes atrás! Aprovecha esta oportunidad
-							única de convertirte en un experto en desarrollo web
-							de forma gratuita con nuestros proyectos. Te
-							llevaremos desde cero hasta la producción, paso a
-							paso, y te brindaremos todo lo que necesitas para
-							tener éxito en esta emocionante industria.
+							Aprenderás a crear aplicaciones sólidas, eficientes
+							y escalables aplicando las mejores prácticas de
+							desarrollo, y todo sin gastar un solo centavo.
 						</p>
+						<div class="py-8">
+							<button
+								class="bg-gradient-to-r from-orange-400 to-primary font-black text-white rounded-full text-xl px-4 py-2"
+								>Ver la lista de proyectos</button
+							>
+						</div>
 					</div>
-					<div class="my-4 relative flex-1"></div>
+					<div
+						class="my-4 w-4/12 flex items-center justify-center h-auto mx-auto"
+					>
+						<Background />
+					</div>
 				</section>
 
 				<section class="py-4" id="projects">
-					<h2 class="text-3xl font-black mb-8">Proyectos</h2>
+					<h2 class="text-3xl font-black mb-8">Ultimos Proyectos</h2>
 					<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 						{
 							projects
@@ -154,96 +121,24 @@ const links = ["Inicio", "Contacto", "Acerca de"];
 					</div>
 				</section>
 
-				<section class="z-10" id="projects">
-					<div class="container mx-auto py-8 z-10">
-						<h2 class="text-3xl font-bold mb-8">Proyectos</h2>
-						<div class="grid grid-cols-2 gap-8">
-							{
-								projects
-									.slice(0, 3)
-									.map((post) => <Card post={post} />)
-							}
-						</div>
+				<footer class="w-full text-center py-8">
+					<div>
+						<a
+							href="https://storyset.com/people"
+							class="hover:underline"
+							>People illustrations by Storyset</a
+						>
 					</div>
-				</section>
-
-				<section id="about" class="h-64">
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Maiores culpa eaque ex corporis praesentium quis
-						quibusdam repudiandae, soluta laudantium id voluptas,
-						nam similique laboriosam explicabo inventore blanditiis
-						saepe voluptatibus pariatur.
-					</p>
-				</section>
-				<section id="about" class="h-64">
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Maiores culpa eaque ex corporis praesentium quis
-						quibusdam repudiandae, soluta laudantium id voluptas,
-						nam similique laboriosam explicabo inventore blanditiis
-						saepe voluptatibus pariatur.
-					</p>
-				</section>
-
-				<section id="about" class="h-64">
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Maiores culpa eaque ex corporis praesentium quis
-						quibusdam repudiandae, soluta laudantium id voluptas,
-						nam similique laboriosam explicabo inventore blanditiis
-						saepe voluptatibus pariatur.
-					</p>
-				</section>
-
-				<section id="about" class="h-64">
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Maiores culpa eaque ex corporis praesentium quis
-						quibusdam repudiandae, soluta laudantium id voluptas,
-						nam similique laboriosam explicabo inventore blanditiis
-						saepe voluptatibus pariatur.
-					</p>
-				</section>
-
-				<section id="about" class="h-64">
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Maiores culpa eaque ex corporis praesentium quis
-						quibusdam repudiandae, soluta laudantium id voluptas,
-						nam similique laboriosam explicabo inventore blanditiis
-						saepe voluptatibus pariatur.
-					</p>
-				</section>
-				<section id="about" class="h-64">
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Maiores culpa eaque ex corporis praesentium quis
-						quibusdam repudiandae, soluta laudantium id voluptas,
-						nam similique laboriosam explicabo inventore blanditiis
-						saepe voluptatibus pariatur.
-					</p>
-				</section>
-				<section id="about" class="h-64">
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Maiores culpa eaque ex corporis praesentium quis
-						quibusdam repudiandae, soluta laudantium id voluptas,
-						nam similique laboriosam explicabo inventore blanditiis
-						saepe voluptatibus pariatur.
-					</p>
-				</section>
-				<section id="about" class="h-64">
-					<p>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Maiores culpa eaque ex corporis praesentium quis
-						quibusdam repudiandae, soluta laudantium id voluptas,
-						nam similique laboriosam explicabo inventore blanditiis
-						saepe voluptatibus pariatur.
-					</p>
-				</section>
-				<footer class="w-full text-center">
-					© {year} Hamaka | Made with 🖤 by Adrian Manjarres in 🇨🇴
+					<div>
+						© {year} Hamaka | Made with 🖤 by
+						<a
+							href="https://github.com/andarms"
+							class="text-primary hover:underline"
+						>
+							Adrian Manjarres
+						</a>
+						in 🇨🇴
+					</div>
 				</footer>
 			</main>
 		</div>

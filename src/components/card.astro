@@ -3,10 +3,10 @@ const { post } = Astro.props;
 ---
 
 <div
-    class="bg-gray-100 dark:bg-slate-800 flex flex-col border border-gray-200 dark:border-slate-700 rounded-lg hover:shadow-lg dark:hover:shadow-gray-700/50 hover:-translate-y-2 cursor-pointer transition-all"
+    class="group bg-gray-100 dark:bg-gray-800 flex flex-col border border-gray-200 dark:border-gray-700 rounded-lg cursor-pointer transition-all relative"
 >
     <div
-        class="h-48 w-full bg-cover rounded-t-lg"
+        class="h-64 w-full bg-cover rounded-t-lg"
         style=`background-image: url(${post.frontmatter.thumbnail});`
     >
     </div>
@@ -39,8 +39,5 @@ const { post } = Astro.props;
                 ))
             }
         </div>
-        <p>
-            {post.frontmatter.desc}
-        </p>
     </div>
 </div>
