@@ -1,57 +1,16 @@
 ---
-import "@fontsource/quicksand";
-import "@fontsource/montserrat";
+import "../styles/global.css";
 
 import Card from "../components/card.astro";
 import Background from "../components/gradient-bg.astro";
-import ThemeSwicher from "../components/theme-switcher.astro";
+import Header from "../components/header.astro";
 
 const year = new Date().getFullYear();
 
 const projects = await Astro.glob("../content/index/*.md");
 
 const headline = "Aprende desarrollo web con nuestros proyectos".split(" ");
-
-const links = ["Inicio", "Blog", "Contacto", "Acerca de"];
 ---
-
-<style>
-	@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
-
-	@tailwind base;
-	@tailwind components;
-	@tailwind utilities;
-
-	@layer base {
-		:root {
-			--color-primary: #ff3b30;
-			--color-secondary: #9dbb2f;
-		}
-	}
-	html {
-		scroll-behavior: smooth;
-	}
-
-	*,
-	body {
-		box-sizing: border-box;
-	}
-
-	.background-animate {
-		background-size: 400%;
-		animation: AnimationName 3s ease-in-out infinite;
-	}
-
-	@keyframes AnimationName {
-		0%,
-		100% {
-			background-position: 0% 50%;
-		}
-		50% {
-			background-position: 100% 50%;
-		}
-	}
-</style>
 
 <html lang="en">
 	<head>
@@ -65,24 +24,7 @@ const links = ["Inicio", "Blog", "Contacto", "Acerca de"];
 	<body
 		class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white scroll-smooth relative"
 	>
-		<header
-			class="sticky top-0 z-30 bg-white bg-opacity-50 backdrop-blur backdrop-filter dark:bg-gray-900 dark:bg-opacity-50"
-		>
-			<div
-				class="div flex justify-between mx-auto w-full max-w-7xl py-4 border-b border-gray-50 dark:border-gray-800"
-			>
-				<div class="flex items-center gap-4">
-					<img
-						src="/images/hamaka.svg"
-						alt=""
-						height="32"
-						width="32"
-					/>
-					<span class="font-black">Hamaka</span>
-				</div>
-				<ThemeSwicher />
-			</div>
-		</header>
+		<Header />
 		<div
 			class="flex w-full max-w-7xl mx-auto gap-16 z-10 mt-12 rounded-lg relative"
 		>
@@ -112,9 +54,10 @@ const links = ["Inicio", "Blog", "Contacto", "Acerca de"];
 							desarrollo, y todo sin gastar un solo centavo.
 						</p>
 						<div class="py-8">
-							<button
+							<a
+								href="/projects"
 								class="bg-primary hover:bg-primary/80 font-black text-white rounded-full text-xl px-4 py-2"
-								>Ver la lista de proyectos</button
+								>Ver la lista de proyectos</a
 							>
 						</div>
 					</div>

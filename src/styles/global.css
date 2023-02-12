@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --color-primary: #ff3b30;
+        --color-secondary: #9dbb2f;
+    }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+*,
+body {
+    box-sizing: border-box;
+}
+
+.background-animate {
+    background-size: 400%;
+    animation: AnimationName 3s ease-in-out infinite;
+}
+
+@keyframes AnimationName {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
