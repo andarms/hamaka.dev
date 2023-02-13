@@ -2,7 +2,7 @@
 import Header from "../components/header.astro";
 import Sidebar from "../components/sidebar.astro";
 import "../styles/global.css";
-const { title } = Astro.props;
+const { frontmatter } = Astro.props;
 
 const year = new Date().getFullYear();
 ---
@@ -14,7 +14,7 @@ const year = new Date().getFullYear();
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
 
-        <title>Hamaka - {title}</title>
+        <title>Hamaka - {frontmatter.title}</title>
     </head>
     <body
         class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white scroll-smooth relative"
@@ -24,7 +24,7 @@ const year = new Date().getFullYear();
             class="flex w-full max-w-7xl mx-auto gap-16 z-10 mt-12 rounded-lg relative"
         >
             <Sidebar />
-            <main id="content" class="w-full mx-auto px-8 lg:p-0">
+            <main id="content" class="lg:w-9/12 mx-auto px-8 lg:p-0">
                 <slot />
                 <footer class="w-full text-center py-8">
                     <div>

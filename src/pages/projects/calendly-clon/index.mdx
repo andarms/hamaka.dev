@@ -8,10 +8,30 @@ slug: calendly-clon
 id: 2
 ---
 import ImagePreview from '../../../components/image-preview.astro'
+import Codeblock from '../../../components/code-block.astro'
+
+
+import { Prism } from '@astrojs/prism';
+import { Code } from 'astro/components';
 
 # {frontmatter.title}
 
 
 <ImagePreview src={frontmatter.thumbnail} />
 
+
+
+
 > This quote will be a custom Blockquote
+
+<Codeblock>
+```js
+---
+import { marked } from 'marked';
+const response = await fetch('https://raw.githubusercontent.com/wiki/adam-p/markdown-here/Markdown-Cheatsheet.md');
+const markdown = await response.text();
+const content = marked.parse(markdown);
+---
+<article set:html={content} />
+```
+</Codeblock>

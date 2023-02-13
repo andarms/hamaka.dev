@@ -2,13 +2,13 @@
 const links = ["Inicio", "Blog", "Contacto", "Acerca de"];
 ---
 
-<aside class="w-96 relative hidden lg:block">
+<aside class="w-3/12 relative hidden lg:block">
     <div class="sticky top-32">
         <div class="flex flex-col rounded-lg w-full mb-6 gap-2">
             {
                 links.map((l) => (
                     <a
-                        class="hover:text-white hover:bg-primary bg-gray-50 dark:bg-gray-800/20 font-black px-4 py-2 rounded-lg text-xl"
+                        class="hover:text-white hover:bg-primary dark:hover:bg-primary bg-gray-50 dark:bg-gray-800/20 font-black px-4 py-2 rounded-lg text-xl"
                         href="#top"
                     >
                         {l}
@@ -16,6 +16,7 @@ const links = ["Inicio", "Blog", "Contacto", "Acerca de"];
                 ))
             }
         </div>
+        <slot />
         <div class="my-4">
             <div class="font-bold mb-3">Systema de inventarios</div>
             <ol>
