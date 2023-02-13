@@ -25,15 +25,9 @@ const year = new Date().getFullYear();
         >
             <Sidebar />
             <main id="content" class="lg:w-9/12 mx-auto px-8 lg:p-0">
+                <h1 class="mb-8">{frontmatter.title}</h1>
                 <slot />
                 <footer class="w-full text-center py-8">
-                    <div>
-                        <a
-                            href="https://storyset.com/people"
-                            class="hover:underline"
-                            >People illustrations by Storyset</a
-                        >
-                    </div>
                     <div>
                         © {year} Hamaka | Made with 🖤 by
                         <a
