@@ -7,7 +7,7 @@ import Header from "../components/header.astro";
 
 const year = new Date().getFullYear();
 
-let projects = await Astro.glob("../pages/projects/**/index.md");
+let projects = await Astro.glob("../pages/projects/**/index.mdx");
 projects.sort((a, b) => (a.frontmatter.id < b.frontmatter.id ? 1 : -1));
 ---
 
