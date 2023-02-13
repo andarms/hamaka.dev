@@ -1,14 +1,14 @@
 ---
+import { Image, Picture } from "@astrojs/image/components";
 const { post } = Astro.props;
 ---
 
-<div
+<a
+    href={`/projects/${post.frontmatter.slug}/`}
     class="group bg-gray-100 dark:bg-gray-800 flex flex-col border border-gray-200 dark:border-gray-700 rounded-lg cursor-pointer transition-all relative"
 >
-    <div
-        class="h-64 w-full bg-cover rounded-t-lg"
-        style=`background-image: url(${post.frontmatter.thumbnail});`
-    >
+    <div class="h-64 w-full bg-cover rounded-t-lg overflow-hidden">
+        <img src={post.frontmatter.thumbnail} width="100%" loading="lazy" />
     </div>
     <div class="p-4">
         <h3 class="text-2xl font-bold text-gray-600 dark:text-gray-200">
@@ -34,10 +34,11 @@ const { post } = Astro.props;
                             height="24"
                             width="24"
                             title={logo}
+                            loading="lazy"
                         />
                     </span>
                 ))
             }
         </div>
     </div>
-</div>
+</a>

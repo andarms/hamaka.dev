@@ -7,9 +7,8 @@ import Header from "../components/header.astro";
 
 const year = new Date().getFullYear();
 
-const projects = await Astro.glob("../content/index/*.md");
-
-const headline = "Aprende desarrollo web con nuestros proyectos".split(" ");
+let projects = await Astro.glob("../pages/projects/**/index.md");
+projects.sort((a, b) => (a.frontmatter.id < b.frontmatter.id ? 1 : -1));
 ---
 
 <html lang="en">
