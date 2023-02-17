@@ -1,6 +1,6 @@
 # [Hamaka.dev](https://www.hamaka.dev/)
 
-Project built with astro
+Project built with astro.
 
 
 ## 🚀 Project Structure
