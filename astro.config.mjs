@@ -7,14 +7,15 @@ import tailwind from "@astrojs/tailwind";
 import remarkMermaid from 'astro-diagram/remark-mermaid';
 import { defineConfig } from 'astro/config';
 
-
-
 // https://astro.build/config
 import react from "@astrojs/react";
 
 // https://astro.build/config
+import sitemap from "@astrojs/sitemap";
+
+// https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), image(), mdx(), react()],
+  integrations: [tailwind(), image(), mdx(), react(), sitemap()],
   markdown: {
     shikiConfig: {
       theme: 'one-dark-pro'

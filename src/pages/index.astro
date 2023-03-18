@@ -22,15 +22,15 @@ projects.sort((a, b) => (a.frontmatter.id < b.frontmatter.id ? 1 : -1));
 		<title>Hamaka</title>
 	</head>
 	<body
-		class="bg-white text-gray-800 dark:bg-gray-900 dark:text-white scroll-smooth relative"
+		class="relative text-gray-800 bg-white dark:bg-gray-900 dark:text-white scroll-smooth"
 	>
 		<Header />
 		<div
-			class="flex w-full max-w-7xl mx-auto gap-16 z-10 mt-12 rounded-lg relative"
+			class="relative z-10 flex w-full gap-16 mx-auto mt-12 rounded-lg max-w-7xl"
 		>
-			<main class="w-full mx-auto px-8 lg:p-0">
+			<main class="w-full px-8 mx-auto lg:p-0">
 				<section id="hero" class="flex flex-col md:flex-row">
-					<div class="pt-24 md:py-24 flex-1" id="header">
+					<div class="flex-1 pt-24 md:py-24" id="header">
 						<hgroup>
 							<h2
 								class="text-2xl text-gray-700 dark:text-gray-200"
@@ -39,7 +39,7 @@ projects.sort((a, b) => (a.frontmatter.id < b.frontmatter.id ? 1 : -1));
 								<span class="animate-wiggle">👋🏽</span>,
 								<span>¡Bienvenido a Hamaka!</span>
 							</h2>
-							<h1 class="text-4xl md:text-6xl font-black mb-4">
+							<h1 class="mb-4 text-4xl font-black md:text-6xl">
 								Aquí te enseñamos a desarrollar software con
 								proyectos reales <span
 									class="font-black text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary background-animate"
@@ -55,30 +55,30 @@ projects.sort((a, b) => (a.frontmatter.id < b.frontmatter.id ? 1 : -1));
 							>
 						</p>
 						<div class="py-8 text-center">
-							<span class="text-lg text-primary font-bold text-xl"
+							<span class="text-lg text-xl font-bold text-primary"
 								>¡Próximamente!</span
 							>
 						</div>
 					</div>
 
 					<div
-						class="my-4 w-4/12 flex items-center justify-center h-auto mx-auto"
+						class="flex items-center justify-center w-4/12 h-auto mx-auto my-4"
 					>
 						<Background />
 					</div>
 				</section>
 
 				<section
-					class="mb-24 mx-auto text-centar w-full md:w-8/12 flex flex-col"
+					class="flex flex-col w-full mx-auto mb-24 text-centar md:w-8/12"
 				>
 					<Newsletter client:load />
 				</section>
 
-				<footer class="w-full text-center py-8">
+				<footer class="w-full py-8 text-center">
 					<div>
 						<a
 							href="https://storyset.com/people"
-							class="hover:underline text-sm"
+							class="text-sm hover:underline"
 							>People illustrations by Storyset</a
 						>
 					</div>
@@ -96,4 +96,15 @@ projects.sort((a, b) => (a.frontmatter.id < b.frontmatter.id ? 1 : -1));
 			</main>
 		</div>
 	</body>
+	<!-- Google tag (gtag.js) -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-0F37XSET2N"
+	></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag() {
+			dataLayer.push(arguments);
+		}
+		gtag("js", new Date());
+		gtag("config", "G-0F37XSET2N");
+	</script>
 </html>
