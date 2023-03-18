@@ -4,8 +4,9 @@ import "../styles/global.css";
 import Card from "../components/card.astro";
 import Background from "../components/gradient-bg.astro";
 import Header from "../components/header.astro";
+import { Newsletter } from "../components/react/newsletter";
 
-const year = new Date().getFullYear();
+const year: number = new Date().getFullYear();
 
 let projects = await Astro.glob("../pages/projects/**/index.mdx");
 projects.sort((a, b) => (a.frontmatter.id < b.frontmatter.id ? 1 : -1));
@@ -53,15 +54,10 @@ projects.sort((a, b) => (a.frontmatter.id < b.frontmatter.id ? 1 : -1));
 								>¡sin gastar un solo centavo!</strong
 							>
 						</p>
-						<div class="py-8">
-							<a
-								class="bg-primary hover:bg-primary/80 font-black text-white rounded-full text-xl px-8 py-2 flex flex-col w-fit cursor-pointer opacity-80"
+						<div class="py-8 text-center">
+							<span class="text-lg text-primary font-bold text-xl"
+								>¡Próximamente!</span
 							>
-								<span class="text-sm text-center"
-									>Próximamente</span
-								>
-								<span> Ver la lista de proyectos</span>
-							</a>
 						</div>
 					</div>
 
@@ -72,30 +68,17 @@ projects.sort((a, b) => (a.frontmatter.id < b.frontmatter.id ? 1 : -1));
 					</div>
 				</section>
 
-				<section class="mb-8">
-					<div class="text-3xl text-center">
-						Déjanos tu email y te avisaremos cuando esté lista.👇🏽
-					</div>
-					<div>
-						<label
-							for="name"
-							class="block text-sm font-medium text-gray-700"
-							>Name</label
-						>
-						<input
-							type="text"
-							id="name"
-							name="name"
-							class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
-						/>
-					</div>
+				<section
+					class="mb-24 mx-auto text-centar w-full md:w-8/12 flex flex-col"
+				>
+					<Newsletter client:load />
 				</section>
 
 				<footer class="w-full text-center py-8">
 					<div>
 						<a
 							href="https://storyset.com/people"
-							class="hover:underline"
+							class="hover:underline text-sm"
 							>People illustrations by Storyset</a
 						>
 					</div>

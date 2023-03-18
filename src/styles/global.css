@@ -8,6 +8,11 @@
     :root {
         --color-primary: #ff3b30;
         --color-secondary: #9dbb2f;
+        --color-primary: #ff3b30;
+        --color-primary-400: #ff4f46;
+        --color-primary-100: #ffa09f;
+        --color-primary-600: #e53429;
+        --color-primary-900: #7f1a0f;
     }
 }
 
