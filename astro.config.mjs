@@ -16,6 +16,7 @@ import sitemap from "@astrojs/sitemap";
 // https://astro.build/config
 export default defineConfig({
   integrations: [tailwind(), image(), mdx(), react(), sitemap()],
+  site: 'https://www.hamaka.dev',
   markdown: {
     shikiConfig: {
       theme: 'one-dark-pro'

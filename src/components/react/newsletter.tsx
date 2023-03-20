@@ -1,23 +1,57 @@
 
 
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 
 type Props = {}
-
+const url = "https://connect.mailerlite.com/api/subscribers"
 function Newsletter({ }: Props) {
+
+    const [subscribed, setSubscribed] = useState(false)
+
+    useEffect(() => {
+        const isSubscribed = localStorage.getItem('subscribed')
+        setSubscribed(isSubscribed === 'true')
+    })
 
     const onSubmit = (e: any) => {
         e.preventDefault()
-        console.log(e.target.email.value)
+        const email = e.target.email.value
+        const data = {
+            email,
+            fields: {
+                name: email
+            },
+            groups: [
+                "83046576296035907"
+            ]
+        }
+        // fetch(url,
+        //     {
+        //         headers: {
+        //             'Accept': 'application/json',
+        //             'Content-Type': 'application/json'
+        //         },
+        //         method: "POST",
+        //         body: JSON.stringify(data)
+        //     })
+        //     .then(function (res) { console.log(res) })
+        //     .catch(function (res) { console.log(res) })
 
+        setSubscribed(true)
+        localStorage.setItem('subscribed', 'true')
     }
 
+    if (subscribed) {
+        return <span className='text-xl text-center'>¡Gracias por unirte a Hamaka! 😊 Te avisaremos por email de todo lo que estamos preparando para ti.</span>
+    }
 
     return (
         <form onSubmit={onSubmit}>
-            <div className="text-2xl">
-                Déjanos tu email 📨 y te avisaremos cuando esté lista.👇🏽
+
+            <div className="text-2xl align-middle">
+                Déjanos tu email y te avisaremos cuando esté lista
             </div>
             <div className="flex gap-4 my-4">
                 <div className="flex-1 ">
@@ -38,7 +72,7 @@ function Newsletter({ }: Props) {
                     >¡Apúntate ya!</button>
                 </div>
             </div>
-        </form>
+        </form >
     )
 }
 
