@@ -18,6 +18,7 @@ function Newsletter({ }: Props) {
     const onSubmit = (e: any) => {
         e.preventDefault()
         const email = e.target.email.value
+
         const data = {
             email,
             fields: {
@@ -27,20 +28,21 @@ function Newsletter({ }: Props) {
                 "83046576296035907"
             ]
         }
-        // fetch(url,
-        //     {
-        //         headers: {
-        //             'Accept': 'application/json',
-        //             'Content-Type': 'application/json'
-        //         },
-        //         method: "POST",
-        //         body: JSON.stringify(data)
-        //     })
-        //     .then(function (res) { console.log(res) })
-        //     .catch(function (res) { console.log(res) })
-
-        setSubscribed(true)
-        localStorage.setItem('subscribed', 'true')
+        fetch(url,
+            {
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${import.meta.env.PUBLIC_MAILERLITE}`
+                },
+                method: "POST",
+                body: JSON.stringify(data)
+            })
+            .then(function () {
+                setSubscribed(true)
+                localStorage.setItem('subscribed', 'true')
+            })
+            .catch(function (res) { console.log(res) })
     }
 
     if (subscribed) {
